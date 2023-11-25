@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShotsFired : MonoBehaviour
 {
     [SerializeField] private float _speed;
-    [SerializeField] private GameObject _Bullet;
+    [SerializeField] private Rigidbody _bullet;
     [SerializeField] private Transform _target;
     [SerializeField] private float _rateOfFire;
 
@@ -22,10 +22,10 @@ public class ShotsFired : MonoBehaviour
         while (isWork)
         {
             var firingDirection = (_target.position - transform.position).normalized;
-            var newBullet = Instantiate(_Bullet, transform.position + firingDirection, Quaternion.identity);
+            var newBullet = Instantiate(_bullet, transform.position + firingDirection, Quaternion.identity);
 
-            newBullet.GetComponent<Rigidbody>().transform.up = firingDirection;
-            newBullet.GetComponent<Rigidbody>().velocity = firingDirection * _speed;
+            newBullet.transform.up = firingDirection;
+            newBullet.velocity = firingDirection * _speed;
 
             yield return new WaitForSeconds(_rateOfFire);
         }
