@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class ShotsFired : MonoBehaviour
+public class Öeapon : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private Rigidbody _bullet;
     [SerializeField] private Transform _target;
     [SerializeField] private float _rateOfFire;
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(ShootingWorker());
     }
